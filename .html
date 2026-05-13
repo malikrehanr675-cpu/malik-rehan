@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malik Rehan | Creative Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+header{
+position:fixed;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo-icon{
+width:55px;
+height:55px;
+border-radius:18px;
+background:linear-gradient(135deg,#00f5ff,#8b5cf6);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:900;
+font-family:'Orbitron',sans-serif;
+box-shadow:0 0 25px rgba(0,245,255,0.5);
+}
+
+.logo-text h1{
+font-size:24px;
+font-family:'Orbitron',sans-serif;
+}
+
+.logo-text span{
+font-size:12px;
+color:#b9b9b9;
+letter-spacing:2px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+margin-left:28px;
+font-size:15px;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00f5ff;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 8% 60px;
+}
+
+.hero-content{
+max-width:900px;
+text-align:center;
+}
+
+.hero h2{
+font-size:22px;
+color:#00f5ff;
+margin-bottom:20px;
+letter-spacing:3px;
+}
+
+.hero h1{
+font-size:82px;
+font-family:'Orbitron',sans-serif;
+line-height:1.1;
+margin-bottom:25px;
+text-shadow:0 0 35px rgba(0,245,255,0.4);
+}
+
+.hero p{
+font-size:20px;
+line-height:1.9;
+color:#d5d5d5;
+margin-bottom:40px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 34px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.4s;
+text-decoration:none;
+display:inline-block;
+}
+
+.primary{
+background:linear-gradient(135deg,#00f5ff,#8b5cf6);
+color:white;
+box-shadow:0 0 25px rgba(0,245,255,0.4);
+}
+
+.secondary{
+background:transparent;
+border:2px solid #00f5ff;
+color:#00f5ff;
+}
+
+.btn:hover{
+transform:translateY(-6px) scale(1.03);
+}
+
+.section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:52px;
+font-family:'Orbitron',sans-serif;
+margin-bottom:70px;
+text-shadow:0 0 20px rgba(0,245,255,0.4);
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:40px 30px;
+border-radius:30px;
+backdrop-filter:blur(12px);
+transition:0.4s;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 0 35px rgba(0,245,255,0.25);
+}
+
+.card-icon{
+font-size:55px;
+margin-bottom:25px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:18px;
+}
+
+.card p{
+line-height:1.9;
+color:#d2d2d2;
+}
+
+.about{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.about-box{
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:30px;
+backdrop-filter:blur(12px);
+}
+
+.about-box h3{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.about-box p{
+line-height:2;
+color:#d5d5d5;
+font-size:17px;
+}
+
+.contact-box{
+background:linear-gradient(135deg,rgba(0,245,255,0.1),rgba(139,92,246,0.12));
+padding:50px;
+border-radius:35px;
+text-align:center;
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact-box h3{
+font-size:42px;
+margin-bottom:20px;
+font-family:'Orbitron',sans-serif;
+}
+
+.contact-box p{
+font-size:18px;
+line-height:1.9;
+margin-bottom:20px;
+color:#d5d5d5;
+}
+
+.contact-links{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.contact-links a{
+padding:16px 28px;
+text-decoration:none;
+border-radius:50px;
+font-weight:600;
+transition:0.3s;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
+}
+
+.email{
+background:#00f5ff;
+color:black;
+}
+
+.contact-links a:hover{
+transform:scale(1.08);
+}
+
+footer{
+padding:35px;
+text-align:center;
+background:#02030a;
+font-size:15px;
+color:#9a9a9a;
+margin-top:60px;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:48px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+nav{
+display:none;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.contact-box{
+padding:35px 20px;
+}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+<div class="logo">
+<div class="logo-icon">🎮</div>
+<div class="logo-text">
+<h1>Malik Rehan</h1>
+<span>GAMER • EDITOR • DEVELOPER</span>
+</div>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<h2>PROFESSIONAL DIGITAL SERVICES</h2>
+<h1>WEBSITES • VIDEO EDITING • GAME DEVELOPMENT</h1>
+<p>
+Hi, I'm Malik Rehan. I create professional websites, cinematic video edits, gaming videos, video shoots, and modern game projects. If you need a stunning website, creative editing, or a custom game project, contact me directly.
+</p>
+
+<div class="hero-buttons">
+<a class="btn primary" href="https://wa.me/923495733903" target="_blank">Contact on WhatsApp</a>
+<a class="btn secondary" href="#services">View Services</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="services">
+<h2 class="section-title">My Services</h2>
+
+<div class="services">
+<div class="card">
+<div class="card-icon">💻</div>
+<h3>Website Development</h3>
+<p>
+Professional modern websites for businesses, schools, gaming brands, portfolios, online stores, and personal projects with premium 3D designs.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🎬</div>
+<h3>Video Editing</h3>
+<p>
+High-quality cinematic editing for YouTube videos, TikTok content, gaming montages, reels, intros, and promotional videos.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🎥</div>
+<h3>Video Shoots</h3>
+<p>
+Creative video shooting services for events, gaming content, cinematic scenes, short films, and social media content.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🎮</div>
+<h3>Game Development</h3>
+<p>
+Custom mobile and PC game projects with modern graphics, gameplay systems, animations, and 3D environments.
+</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+<div class="about-box">
+<h3>Creative Digital Creator</h3>
+<p>
+I am Malik Rehan, a passionate creator specializing in website development, gaming projects, cinematic video editing, and professional digital experiences. My goal is to help brands, creators, and businesses build a powerful online presence with modern and visually stunning content.
+</p>
+</div>
+
+<div class="about-box">
+<h3>Why Work With Me?</h3>
+<p>
+✔ Professional 3D websites<br>
+✔ Gaming & YouTube edits<br>
+✔ Fast communication<br>
+✔ Mobile-friendly designs<br>
+✔ Modern UI/UX styles<br>
+✔ Creative and unique projects
+</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2 class="section-title">Contact Me</h2>
+
+<div class="contact-box">
+<h3>Let's Work Together</h3>
+<p>
+Need a professional website, video editing, game project, or video shoot? Contact me directly through WhatsApp or email.
+</p>
+
+<p><strong>Email:</strong> malikrehanr675@gmail.com</p>
+<p><strong>WhatsApp:</strong> 0349-5733903</p>
+
+<div class="contact-links">
+<a class="whatsapp" href="https://wa.me/923495733903" target="_blank">WhatsApp Me</a>
+<a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=malikrehanr675@gmail.com" target="_blank">Send Email</a>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Malik Rehan • Professional Digital Services • All Rights Reserved
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+canvas:document.getElementById('bg'),
+alpha:true,
+antialias:true
+});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+camera.position.z = 6;
+
+const torusGeometry = new THREE.TorusKnotGeometry(1.4,0.4,120,16);
+const torusMaterial = new THREE.MeshBasicMaterial({
+color:0x00f5ff,
+wireframe:true
+});
+
+const torus = new THREE.Mesh(torusGeometry,torusMaterial);
+scene.add(torus);
+
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 3500;
+const positions = new Float32Array(particlesCount * 3);
+
+for(let i=0;i<particlesCount*3;i++){
+positions[i]=(Math.random()-0.5)*30;
+}
+
+particlesGeometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+
+const particlesMaterial = new THREE.PointsMaterial({
+size:0.03,
+color:0xffffff
+});
+
+const particles = new THREE.Points(particlesGeometry,particlesMaterial);
+scene.add(particles);
+
+function animate(){
+requestAnimationFrame(animate);
+
+torus.rotation.x += 0.004;
+torus.rotation.y += 0.006;
+
+particles.rotation.y += 0.0008;
+
+renderer.render(scene,camera);
+}
+
+animate();
+
+window.addEventListener('resize',()=>{
+camera.aspect = window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
+});
+</script>
+
+</body>
+</html>
